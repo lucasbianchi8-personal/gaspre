@@ -1,0 +1,7 @@
+
+@if (booking()) {
+    <h4> Felicitaciones, agendaste una clase para {{ booking()?.className }}</h4>
+    <p>
+        Recordá llevar los elementos necesarios. Te esperará el profesor {{ booking()?.instructor }} los dias {{ booking()?.schedule }}
+    </p>
+}

@@ -46,13 +46,15 @@ export const mockInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   if (req.url.includes('/bookings/reservation') && req.method === 'POST') {
+    loaderService.show();
     return of(
       new HttpResponse({
         status: 200,
         body: 'Reserva confirmada'
       })
     ).pipe(
-      delay(3000)
+      delay(3000),
+      tap(() => loaderService.hide())
     )
   }
   return next(req);

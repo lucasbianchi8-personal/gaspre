@@ -10,7 +10,7 @@ export class BookingItemComponent {
   public readonly index = input.required<number>();
   public readonly booking = input.required<IntBooking>();
 
-  public readonly bookingClass = output<void>();
+  public readonly bookingReservation = output<IntBooking>();
 
   public readonly showMore = signal(false);
 
@@ -18,7 +18,7 @@ export class BookingItemComponent {
     this.showMore.set(true);
   }
 
-  public onBookingClass() {
-    this.bookingClass.emit();
+  public onBookingReservation() {
+    this.bookingReservation.emit(this.booking());
   }
 }

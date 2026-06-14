@@ -4,17 +4,13 @@
 </button>
 
 @if (showMore()) {
-    <p>Clase:</p>
-    <span>{{ booking().className }}</span>
-    <p>Horario:</p>
-    <span>{{ booking().schedule }}</span>
-    <p>Profesor:</p>
-    <span>{{ booking().instructor }}</span>
-    <p>Cupos:</p>
-    <span>{{ booking().availableSpots }}</span>
-
+    <p>Clase: <span>{{ booking().className }}</span></p>
+    <p>Horario: <span>{{ booking().schedule }}</span></p>
+    <p>Profesor: <span>{{ booking().instructor }}</span></p>
+    <p>Cupos: <span>{{ booking().availableSpots }}</span></p>
+    
     @if (booking().availableSpots) {
-        <button type="button" (click)="onBookingClass()">
+        <button type="button" (click)="onBookingReservation()">
             Reservar
         </button>
     }

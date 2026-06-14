@@ -1,9 +1,14 @@
 @if (bookings()) {
-    @for (booking of bookings(); track booking.id; let i = $index) {
-        <app-booking-item-component
-            [booking]="booking"
-            [index]="i + 1"
-            (bookingClass)="onBookingClass(booking.id)"
+    @if (bookings()!.length) {
+        @for (booking of bookings(); track booking.id; let i = $index) {
+            <app-booking-item-component
+                [booking]="booking"
+                [index]="i + 1"
+                (bookingReservation)="onBookingReservation(booking)"
             />
+        }
+    }
+    @else {
+        <app-booking-empty-component />
     }
 }
