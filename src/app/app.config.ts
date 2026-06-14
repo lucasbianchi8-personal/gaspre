@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { mockInterceptor } from './interceptors/mock/mock-interceptor';
 import { loaderInterceptor } from './interceptors/loader/loader-interceptor';
+import { errorInterceptor } from './interceptors/error/error-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +14,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([
         mockInterceptor,
-        loaderInterceptor
+        loaderInterceptor,
+        errorInterceptor
       ])
     )
   ]

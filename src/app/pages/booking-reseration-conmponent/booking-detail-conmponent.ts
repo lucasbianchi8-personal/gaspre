@@ -3,12 +3,10 @@ import { BookingService } from '../../services/booking/booking.service.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-booking-reseration-conmponent',
-  imports: [],
-  templateUrl: './booking-reseration-conmponent.html',
-  styleUrl: './booking-reseration-conmponent.scss',
+  selector: 'app-booking-detail-conmponent',
+  templateUrl: './booking-detail-conmponent.html'
 })
-export class BookingReserationConmponent {
+export class BookingDetailConmponent {
 
   private readonly bookingService = inject(BookingService);
 

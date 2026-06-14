@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { BookingListComponent } from './pages/booking-list-component/booking-list-component';
-import { BookingReserationConmponent } from './pages/booking-reseration-conmponent/booking-reseration-conmponent';
+import { BookingDetailConmponent } from './pages/booking-reseration-conmponent/booking-detail-conmponent';
 
 export const routes: Routes = [
     {
@@ -8,8 +8,8 @@ export const routes: Routes = [
         component: BookingListComponent
     },
     {
-        path: 'reservation',
-        component: BookingReserationConmponent
+        path: 'detail',
+        component: BookingDetailConmponent
     },
     {
         path: '**',

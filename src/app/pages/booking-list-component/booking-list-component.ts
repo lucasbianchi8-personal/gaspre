@@ -24,7 +24,7 @@ export class BookingListComponent {
     this.bookingSercice.bookingReservation(booking)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
-        this.router.navigateByUrl('reservation')
+        this.router.navigateByUrl('detail')
     });
   }
 }

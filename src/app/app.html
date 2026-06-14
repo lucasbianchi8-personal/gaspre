@@ -1,4 +1,9 @@
 <router-outlet />
+
 @if (loading()) {
   <app-loader-component />
+}
+
+@if (error()) {
+  <app-error-component (onClose)="closeError()"/>
 }
