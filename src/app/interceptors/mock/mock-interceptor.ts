@@ -1,6 +1,8 @@
 import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
-import { delay, of } from 'rxjs';
+import { delay, of, tap } from 'rxjs';
 import { IntBooking } from '../../schemas/booking.interface';
+import { LoaderService } from '../../services/loader/loader-service';
+import { inject } from '@angular/core';
 
 const MOCK_BOOKINGS: IntBooking[] = [
   {
@@ -27,18 +29,23 @@ const MOCK_BOOKINGS: IntBooking[] = [
 ]
 
 export const mockInterceptor: HttpInterceptorFn = (req, next) => {
+
+  const loaderService = inject(LoaderService);
+  
   if (req.url === '/bookings' && req.method === 'GET') {
+    loaderService.show();
     return of(
       new HttpResponse({
         status: 200,
         body: MOCK_BOOKINGS
       })
     ).pipe(
-      delay(3000)
+      delay(3000),
+      tap(() => loaderService.hide())
     )
   }
 
-  if (req.url === '/bookings/reservation' && req.method === 'POST') {
+  if (req.url.includes('/bookings/reservation') && req.method === 'POST') {
     return of(
       new HttpResponse({
         status: 200,

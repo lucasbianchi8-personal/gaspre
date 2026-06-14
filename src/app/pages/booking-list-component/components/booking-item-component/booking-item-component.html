@@ -13,7 +13,9 @@
     <p>Cupos:</p>
     <span>{{ booking().availableSpots }}</span>
 
-    <button type="button" (click)="onBookingClass()">
-        Reservar
-    </button>
+    @if (booking().availableSpots) {
+        <button type="button" (click)="onBookingClass()">
+            Reservar
+        </button>
+    }
 }

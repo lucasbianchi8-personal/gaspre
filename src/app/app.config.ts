@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { mockInterceptor } from './interceptors/mock/mock-interceptor';
+import { loaderInterceptor } from './interceptors/loader/loader-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,7 +12,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
-        mockInterceptor
+        mockInterceptor,
+        loaderInterceptor
       ])
     )
   ]
