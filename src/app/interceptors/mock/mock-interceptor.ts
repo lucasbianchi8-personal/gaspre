@@ -1,11 +1,11 @@
 import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
-import { of } from 'rxjs';
+import { delay, of } from 'rxjs';
 import { IntBooking } from '../../schemas/booking.interface';
 
 const MOCK_BOOKINGS: IntBooking[] = [
   {
     id: 1,
-    className: 'Yoca',
+    className: 'Yoga',
     instructor: 'Lucas',
     schedule: 'Lunes 18:00',
     availableSpots: 1
@@ -27,14 +27,26 @@ const MOCK_BOOKINGS: IntBooking[] = [
 ]
 
 export const mockInterceptor: HttpInterceptorFn = (req, next) => {
+  if (req.url === '/bookings' && req.method === 'GET') {
+    return of(
+      new HttpResponse({
+        status: 200,
+        body: MOCK_BOOKINGS
+      })
+    ).pipe(
+      delay(3000)
+    )
+  }
 
-   if (req.url === '/bookings' && req.method === 'GET') {
-      return of(
-        new HttpResponse({
-          status: 200,
-          body: MOCK_BOOKINGS
-        })
-      );
-    }
+  if (req.url === '/bookings/reservation' && req.method === 'POST') {
+    return of(
+      new HttpResponse({
+        status: 200,
+        body: 'Reserva confirmada'
+      })
+    ).pipe(
+      delay(3000)
+    )
+  }
   return next(req);
 };

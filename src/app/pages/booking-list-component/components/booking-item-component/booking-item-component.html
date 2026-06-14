@@ -1,0 +1,19 @@
+<p>Tarjeta de clase {{ index() }}</p>
+<button type="button" (click)="onShowMore()">
+  Ver más
+</button>
+
+@if (showMore()) {
+    <p>Clase:</p>
+    <span>{{ booking().className }}</span>
+    <p>Horario:</p>
+    <span>{{ booking().schedule }}</span>
+    <p>Profesor:</p>
+    <span>{{ booking().instructor }}</span>
+    <p>Cupos:</p>
+    <span>{{ booking().availableSpots }}</span>
+
+    <button type="button" (click)="onBookingClass()">
+        Reservar
+    </button>
+}

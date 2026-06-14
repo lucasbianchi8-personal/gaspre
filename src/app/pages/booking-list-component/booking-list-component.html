@@ -1,0 +1,9 @@
+@if (bookings()) {
+    @for (booking of bookings(); track booking.id; let i = $index) {
+        <app-booking-item-component
+            [booking]="booking"
+            [index]="i + 1"
+            (bookingClass)="onBookingClass(booking.id)"
+            />
+    }
+}
